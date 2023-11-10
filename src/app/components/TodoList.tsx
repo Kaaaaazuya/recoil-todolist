@@ -1,8 +1,7 @@
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { useRecoilValue } from 'recoil'
 import { todoListState } from '../data-flow/todoList'
 import { TodoListStats } from './TodoListStas'
-import { ChangeEvent, useState } from 'react'
-import { useRandomNumber } from '../hook/useRandomNumber'
+
 import { TodoItemCreator } from './TodoItemCreator'
 
 export const TodoList = () => {
