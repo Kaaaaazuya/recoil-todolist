@@ -1,16 +1,14 @@
 import { useRecoilValue } from 'recoil'
-import { todoListState, todoListStatsState } from '../todoList'
+import { todoListState } from '../todoList'
+import { TodoListStats } from './TodoListStas'
 
 export const TodoList = () => {
   const todoList = useRecoilValue(todoListState)
-  const totalNum = useRecoilValue(todoListStatsState)
 
   return (
     <>
       <h1>RecoilによるTodoアプリ</h1>
-      <ul>
-        <li>Todoの登録数:{totalNum}</li>
-      </ul>
+      <TodoListStats />
       {todoList.map((item) => (
         <div key={item.id}>{item.title}</div>
       ))}
