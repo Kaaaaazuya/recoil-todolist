@@ -20,7 +20,13 @@ export const todoListStatsState = selector({
     //getプロパティのget関数はselectorの中のみで利用することができatomやselectorにアクセスすることができます
     const todoList = get(todoListState)
     const totalNum = todoList.length
-    return totalNum
+    const totalCompletedNum = todoList.filter((item) => item.isComplete).length
+    const totalUncompletedNum = totalNum - totalCompletedNum
+    return {
+      totalNum,
+      totalCompletedNum,
+      totalUncompletedNum,
+    }
   },
   //setプロパティを利用してatomの値を更新することもできます
 })
