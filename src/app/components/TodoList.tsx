@@ -3,6 +3,7 @@ import { todoListState } from '../data-flow/todoList'
 import { TodoListStats } from './TodoListStas'
 
 import { TodoItemCreator } from './TodoItemCreator'
+import { TodoItem } from './TodoItem'
 
 export const TodoList = () => {
   const todoList = useRecoilValue(todoListState)
@@ -13,7 +14,7 @@ export const TodoList = () => {
       <TodoListStats />
       <TodoItemCreator />
       {todoList.map((item) => (
-        <div key={item.id}>{item.title}</div>
+        <TodoItem key={item.id} item={item} />
       ))}
     </>
   )
