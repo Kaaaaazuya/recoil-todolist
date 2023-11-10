@@ -13,6 +13,11 @@ export const todoListState = atom<TodoListItem[]>({
   ],
 })
 
+export const todoListFilterState = atom({
+  key: 'todoListFilterState',
+  default: 'すべて',
+})
+
 // selectorはatomの状態を操作したい場合(atomの値を利用して別の処理を行う)に利用する
 export const todoListStatsState = selector({
   key: 'todoListStatsState', // アプリケーション内で一意
@@ -29,4 +34,21 @@ export const todoListStatsState = selector({
     }
   },
   //setプロパティを利用してatomの値を更新することもできます
+})
+
+export const filteredTodoListState = selector({
+  key: 'filteredTodoListState',
+  get: ({ get }) => {
+    const filter = get(todoListFilterState)
+    const list = get(todoListState)
+
+    switch (filter) {
+      case '完了':
+        return list.filter((item) => item.isComplete)
+      case '未完了':
+        return list.filter((item) => !item.isComplete)
+      default:
+        return list
+    }
+  },
 })
