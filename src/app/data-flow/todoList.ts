@@ -1,6 +1,7 @@
 import { atom, selector } from 'recoil'
+import { TodoListItem } from '../types/TodoListItem'
 
-export const todoListState = atom({
+export const todoListState = atom<TodoListItem[]>({
   key: 'todoListState', // アプリケーション内で一意
   default: [
     // default は必須
