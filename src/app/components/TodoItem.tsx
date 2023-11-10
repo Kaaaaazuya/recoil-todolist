@@ -9,6 +9,15 @@ type TodoItemProps = {
 export const TodoItem = ({ item }: TodoItemProps) => {
   const [todoList, setTodoList] = useRecoilState(todoListState)
 
+  const toggleItemCompletion = () => {
+    const newTodoList = todoList.map((listItem) =>
+      listItem.id === item.id
+        ? { ...listItem, isComplete: !listItem.isComplete }
+        : listItem,
+    )
+    setTodoList(newTodoList)
+  }
+
   const deleteItem = () => {
     const newTodoList = todoList.filter((listItem) => listItem.id !== item.id)
     setTodoList(newTodoList)
@@ -16,6 +25,9 @@ export const TodoItem = ({ item }: TodoItemProps) => {
 
   return (
     <div>
+      <button onClick={toggleItemCompletion} type='button'>
+        {item.isComplete ? '完' : '未'}
+      </button>
       {item.title}
       <span onClick={deleteItem} style={{ cursor: 'pointer' }}>
         X
