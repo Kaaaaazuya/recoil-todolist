@@ -1,7 +1,7 @@
 import { useState, ChangeEvent } from 'react'
 import { useSetRecoilState } from 'recoil'
 import { useRandomNumber } from '../hook/useRandomNumber'
-import { todoListState } from '../todoList'
+import { todoListState } from '../data-flow/todoList'
 
 export const TodoItemCreator = () => {
   const [title, setTitle] = useState('')
