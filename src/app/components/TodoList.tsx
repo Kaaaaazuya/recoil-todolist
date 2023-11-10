@@ -1,9 +1,5 @@
 import { useRecoilState, useRecoilValue } from 'recoil'
-import {
-  filteredTodoListState,
-  todoListFilterState,
-  todoListState,
-} from '../data-flow/todoList'
+import { filteredTodoListState, todoListFilterState } from '../data-flow/todoList'
 import { TodoListStats } from './TodoListStas'
 
 import { TodoItemCreator } from './TodoItemCreator'
